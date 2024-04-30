@@ -27,11 +27,3 @@ const FirstPage = ({}: FirstPageProps) => {
 };
 
 export default FirstPage;
-
-// 1. 롯데시네마 영화 보기
-
-// 2. 스타벅스 가보고 너무 시끄러우면 스터디 카페
-
-// 3. 밥은 롯데몰 한번 둘러보기 (커리)
-
-// 4.

@@ -66,6 +66,7 @@ const SeventhPage = ({}: SeventhPageProps) => {
         onChange={(e) => setName(e.target.value)}
         value={name}
       />
+      {/* @ts-ignore */}
       <user-profile name={name} email="john.doe@example.com"></user-profile>
     </>
   );

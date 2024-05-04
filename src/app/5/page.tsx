@@ -12,6 +12,7 @@ const FifthPage = ({}: FifthPageProps) => {
 
       <section className="flex flex-col gap-2">
         <h1>Support for stylesheets</h1>
+        {/* @ts-ignore */}
         <link rel="stylesheet" href="./text.css" precedence="default" />
       </section>
 

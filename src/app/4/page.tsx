@@ -1,5 +1,6 @@
 "use client";
 import React, { useOptimistic, useState, useTransition } from "react";
+import { useFormStatus } from "react-dom";
 
 interface FourthPageProps {}
 
@@ -32,22 +33,9 @@ const FourthPage = ({}: FourthPageProps) => {
   return (
     <div>
       <form action={handleSubmit}>
-        <label htmlFor="name">Update Name:</label>
-        <input
-          className="text-black"
-          id="name"
-          type="text"
-          name="name"
-          disabled={isPending}
-        />
-        <button
-          type="submit"
-          disabled={isPending}
-          className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
-        >
-          Submit
-        </button>
+        <Form />
       </form>
+
       <p>isPending: {JSON.stringify(isPending)}</p>
       <p>name: {name}</p>
       <p>optimisticName: {optimisticName}</p>
@@ -56,3 +44,22 @@ const FourthPage = ({}: FourthPageProps) => {
 };
 
 export default FourthPage;
+
+const Form = () => {
+  const { pending, data } = useFormStatus();
+
+  console.log("pending:", pending, "data:", data?.get("name"));
+  return (
+    <>
+      <label htmlFor="name">Update Name:</label>
+      <input className="text-black" id="name" type="text" name="name" />
+      <button
+        type="submit"
+        className="text-white bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-full text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700"
+        disabled={pending}
+      >
+        Submit
+      </button>
+    </>
+  );
+};
